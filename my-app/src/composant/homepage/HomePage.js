@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+
 const GET_GRAPHQL_INFO = gql`
   {
     astronautSchemaAssert

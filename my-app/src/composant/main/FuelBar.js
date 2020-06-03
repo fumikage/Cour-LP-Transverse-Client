@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
+import { ProgressBar } from "react-bootstrap";
 class SampleComponent extends Component {
     render() {
-      return <div>Fuel Bar of the Rocket</div>;
+      return <ProgressBar now={60} />;
     }
 }
 
