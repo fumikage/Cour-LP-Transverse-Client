@@ -6,14 +6,16 @@ import { Button } from 'react-bootstrap';
 
 
 
-
-
-
-
 class SampleComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {bodyName: 'body-name1'};
+    this.state = {bodyName: 'body-name1',fuel: 1};
+  }
+  addPoint(){
+    var fuel = this.state.fuel +1;
+    this.setState({fuel});
+  
+    
   }
   changeState(){ 
   
@@ -58,8 +60,10 @@ class SampleComponent extends Component {
              
             </div>
             <div class="row">
+      
               <div class="col align-self-center">
-                <button type="image" class="button"></button>
+      <div id="countFuel">{this.state.fuel}</div>
+                <button type="image" class="button" onClick={this.addPoint.bind(this)}></button>
               </div>
             </div>
             <div class="row">
