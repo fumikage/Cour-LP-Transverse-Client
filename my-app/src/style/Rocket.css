@@ -7,9 +7,7 @@ body {
 	background-color:#262446 
  
 	;
-	position: fixed;
 	width: 70%;
-	height: 100%; 	
 	top: 0;
 	left:0;
 
@@ -38,20 +36,27 @@ a:hover {
 
 .right { 
 	background: url('../img/stars_background.png') no-repeat center/cover;
-	position: fixed;
 	width: 30%;
-	height: 100%; 	
 	top: 0;
 	right:0;
+	display: flex;
+	flex-direction: column;
  }
+
+.completeDraw {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	align-items: center;
+	justify-content: flex-end;
+}
 
 .ground {
 	background: url('../img/ground.png') no-repeat center 0;
-	position: absolute;
 	bottom: 10px;
 	left: 0;
-	width: 100%;
 	height: 20px;
+	width: 100%;
 
 }
 
@@ -85,18 +90,13 @@ a:hover {
  }
 
 .rocket { 
-	position: absolute;
-	left: 50%;
-	bottom: -13px;
 	width: 143px;
 	height: 272px;
-	margin-left: -71.5px;
 	background: url('../img/rocket-state1.png') no-repeat 0 0;
-	transition: bottom 10000ms;
  }
 
 div.body-state1 .rocket {
-	transition: none,
+	transition: none;
 }
 
 /*rocket bg image*/
@@ -121,7 +121,8 @@ div.body-state5 .rocket {
 
 div.body-state3 .rocket,
 div.body-state4 .rocket {
-	bottom: 1000px;
+	transition: 4s;
+	transform: translateY(-300%);
 }
 
 .state1,
@@ -138,8 +139,61 @@ div.body-state2 .state2{display: block;}
 div.body-state21 .state21{display: block;} 
 div.body-state3 .state3{display: block;} 
 div.body-state4 .state4{display: block;} 
-div.body-state5 .state5{display: block;} 
+div.body-state5 .state5{display: block;}
 
+.body-name1{
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-state1 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-State1 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-State1 .rocket {
+	transition: 4s;
+	transform: translateY(0%);
+}
+
+
+.body-state2 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-state21 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-state3 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-state4 {
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
+
+.body-state5{
+	display: flex;
+	flex-direction: row;
+	height: 600px;
+}
 
 .button
 {

@@ -74,12 +74,12 @@ class SampleComponent extends Component {
             </div>
           </div>
       
-        <div class="right">
-          <div>
-          
+        <div className="right">
+          <div className="completeDraw">
+              <div className="rocket"/>
+              <div className="ground"/>
           </div>
-          <div class="ground"></div>
-          <div class="rocket"></div>
+
          
       
         </div>

@@ -6,6 +6,8 @@ import LoginForm from "./composant/homepage/LoginForm";
 import RegisterForm from "./composant/homepage/RegisterForm";
 import MainPage from "./composant/main/MainPage";
 import Rocket from "./composant/main/Rocket";
+import NavBar from "./composant/common/NavBar";
+import Header from "./composant/common/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -13,22 +15,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div className="App">
-      <nav>
-        <ul className="nav-list">
-          <li>
-            <Link to="/home">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-          <li>
-            <Link to="/rocket">Rocket</Link>
-          </li>
-        </ul>
-      </nav>
+        <Header/>
+        <NavBar/>
       <Switch>
         <Route path="/home">
           <HomePage />
@@ -46,9 +34,9 @@ function App() {
          <Rocket />
        </Route>
       </Switch>
-      <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin></script>
+      <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin/>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin/>
+    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin/>
     <script>var Alert = ReactBootstrap.Alert;</script>
     </div>
     
