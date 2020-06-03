@@ -62,7 +62,7 @@ class SampleComponent extends Component {
             <div class="row">
       
               <div class="col align-self-center">
-      <div id="countFuel">{this.state.fuel}</div>
+                    <div id="countFuel">{this.state.fuel}</div>
                 <button type="image" class="button" onClick={this.addPoint.bind(this)}></button>
               </div>
             </div>
