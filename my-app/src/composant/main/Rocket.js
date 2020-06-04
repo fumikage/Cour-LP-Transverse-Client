@@ -57,6 +57,8 @@ class Rocket extends Component {
 
         } else if (seconds <= 9 && seconds >= 5) {
             this.setState({bodyName: 'body-state21'});
+        } else if (seconds <= 5 && seconds >= 4) {
+            this.setState({bodyName: 'body-state31'});
         } else if (seconds === 0) {
             clearInterval(this.timer);
             this.timer = 0
@@ -69,7 +71,7 @@ class Rocket extends Component {
     }
 
   restartLaunch(){
-    this.setState ({bodyName: 'body-state1'});
+    this.setState ({bodyName: 'body-State1'});
     return 0;
   }
   //<Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
@@ -84,7 +86,7 @@ class Rocket extends Component {
             </div>
             <div className="row" style={{"color":"white"}}>
               <div className="col align-self-center">
-                <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}} disabled={this.state.bodyName !== "body-state1"}/>
+                <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}} disabled={this.state.bodyName !== "body-state1" && this.state.bodyName !== "body-State1"}/>
               </div>
             </div>
             <div className="row">
