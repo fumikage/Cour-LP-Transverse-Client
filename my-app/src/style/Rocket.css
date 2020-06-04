@@ -63,44 +63,11 @@ a:hover {
 
 }
 
-.nervous { 
-	position: absolute;
-	bottom: 220px;
-	left: 50%;
-	margin-left: -180px;
-	background: url('../img/nervous.png') no-repeat 0 0;
-	width: 223px;
-	height: 100px;
-	display: none;
- }
-
-.nervous.show {
- 	display: block;
- }
-
-.cant-wait{ 
-	display: none;
-	position: absolute;
-	bottom: 220px;
-	left: 50%;
-	background: url('../img/cant-wait.png') no-repeat 0 0;
-	width: 206px;
-	height: 65px;
- }
-
- .cant-wait.show {
- 	display: block;
- }
-
 .rocket { 
 	width: 143px;
 	height: 272px;
 	background: url('../img/rocket-state1.png') no-repeat 0 0;
  }
-
-div.body-state1 .rocket {
-	transition: none;
-}
 
 /*rocket bg image*/
 div.body-state2 .rocket {
@@ -122,27 +89,12 @@ div.body-state5 .rocket {
 	margin-left: -104.5px;
 }
 
-div.body-state3 .rocket,
-div.body-state4 .rocket {
-	transition: 5s;
+div.body-state3 .rocket{
+	transition: 10s;
+	-moz-transform: translateY(-500%);
+	-webkit-transform: translateY(-500%);
 	transform: translateY(-500%);
 }
-
-.state1,
-.state2,
-.state21,
-.state3,
-.state4, 
-.state5 { 
-	display: none;
-}
-
-div.body-state1 .state1{display: block;} 
-div.body-state2 .state2{display: block;} 
-div.body-state21 .state21{display: block;} 
-div.body-state3 .state3{display: block;} 
-div.body-state4 .state4{display: block;} 
-div.body-state5 .state5{display: block;}
 
 .body-name1{
 	display: flex;

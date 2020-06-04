@@ -10,35 +10,63 @@ import MyProgressBar from "./ProgressBar";
 class Rocket extends Component {
   constructor(props) {
     super(props);
-    this.state = {bodyName: 'body-name1'};
+    this.state = {bodyName: 'body-name1', time: {}, seconds: 15};
+    this.timer = 0;
+    this.startTimer = this.startTimer.bind(this);
+    this.countDown = this.countDown.bind(this);
   }
 
-  changeState(){
+    secondsToTime(secs){
+        let hours = Math.floor(secs / (60 * 60));
 
-    const renderer = ({ hours, minutes, seconds, completed }) => {
-      if (seconds <= 8 && seconds >=5){
-        this.setState({bodyName:'body-state2'});
-        return <span>{seconds}</span>
-      } else if( seconds <=4 && seconds >=1){
-        this.setState({bodyName:'body-state21'});
-        return <span>{seconds}</span>
-      }else if (seconds === 0){
-        this.setState({bodyName:'body-state3'});
-        this.props.dispatch(reinitialize());
+        let divisor_for_minutes = secs % (60 * 60);
+        let minutes = Math.floor(divisor_for_minutes / 60);
+
+        let divisor_for_seconds = divisor_for_minutes % 60;
+        let seconds = Math.ceil(divisor_for_seconds);
+
+        let obj = {
+            "h": hours,
+            "m": minutes,
+            "s": seconds
+        };
+        return obj;
     }
-      else if(!completed){
-        this.setState ({bodyName:'body-state1'});
-        return <span>{seconds}</span>;
-      }
-    };
-   
-  ReactDOM.render(
-    (
-      <Countdown date={Date.now() + 10000}
-        renderer={renderer} />
-    ),
-    document.getElementById('Completionist'));
-  };
+
+    componentDidMount() {
+        let timeLeftVar = this.secondsToTime(this.state.seconds);
+        this.setState({ time: timeLeftVar });
+    }
+
+    startTimer() {
+        if (this.timer == 0 && this.state.seconds > 0) {
+            this.timer = setInterval(this.countDown, 1000);
+        }
+    }
+
+    countDown() {
+        // Remove one second, set state so a re-render happens.
+        let seconds = this.state.seconds - 1;
+        this.setState({
+            time: this.secondsToTime(seconds),
+            seconds: seconds,
+        });
+        if (seconds <= 15 && seconds >= 10) {
+            this.setState({bodyName: 'body-state2'});
+
+        } else if (seconds <= 9 && seconds >= 5) {
+            this.setState({bodyName: 'body-state21'});
+        } else if (seconds === 0) {
+            clearInterval(this.timer);
+            this.timer = 0
+            this.setState({
+                seconds: 15
+            })
+        } else {
+            this.setState({bodyName: 'body-state3'})
+        }
+    }
+
   restartLaunch(){
     this.setState ({bodyName: 'body-State1'});
     return 0;
@@ -50,34 +78,28 @@ class Rocket extends Component {
         <div className="container-fluid">
           <div className={this.state.bodyName}>
            <div className="left">
-               <div id="Completionist"/>
             <div className="my-progress-bar">
             <MyProgressBar counter={this.props.counter}/>
             </div>
-            <div className="row">
-      
+            <div className="row" style={{"color":"white"}}>
               <div className="col align-self-center">
-                    <div id="countFuel">{this.state.fuel}</div>
                 <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}}></button>
               </div>
             </div>
             <div className="row">
               <div className="col align-self-center">
-                  <Button variant="secondary" onClick={this.changeState.bind(this)} disabled={this.props.counter < 100 }>Launch</Button>{''}
+                  <Button variant="secondary" onClick={this.startTimer} disabled={this.props.counter < 100 }>Launch</Button>{''}
                   <Button variant="secondary" onClick={this.restartLaunch.bind(this)} disabled={this.state.bodyName !== 'body-state3'}>Restart</Button>{''}
               </div>
             </div>
           </div>
       
-        <div className="right">
-          <div className="completeDraw">
-              <div className="rocket"/>
-              <div className="ground"/>
-          </div>
-
-
-
-        </div>
+            <div className="right">
+              <div className="completeDraw">
+                  <div className="rocket"/>
+                  <div className="ground"/>
+              </div>
+            </div>
           </div>
         </div>
     );
