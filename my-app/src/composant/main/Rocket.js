@@ -41,7 +41,6 @@ class Rocket extends Component {
   };
   restartLaunch(){
     this.setState ({bodyName: 'body-State1'});
-    this.props.dispatch(reinitialize());
     return 0;
   }
   //<Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
@@ -65,7 +64,7 @@ class Rocket extends Component {
             <div className="row">
               <div className="col align-self-center">
                   <Button variant="secondary" onClick={this.changeState.bind(this)} disabled={this.props.counter < 100 }>Launch</Button>{''}
-                  <Button variant="secondary" onClick={this.restartLaunch.bind(this)}>Restart</Button>{''}
+                  <Button variant="secondary" onClick={this.restartLaunch.bind(this)} disabled={this.state.bodyName !== 'body-state3'}>Restart</Button>{''}
               </div>
             </div>
           </div>
