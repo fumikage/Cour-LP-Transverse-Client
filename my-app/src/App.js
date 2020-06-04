@@ -9,10 +9,11 @@ import Rocket from "./composant/main/Rocket";
 import NavBar from "./composant/common/NavBar";
 import Header from "./composant/common/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import {useSelector, useDispatch} from "react-redux";
 
 function App() {
+    const counter = useSelector(state => state.counter);
+    const dispatch = useDispatch();
   return (
     <div className="App">
         <Header/>
@@ -30,12 +31,12 @@ function App() {
          <MainPage />
        </Route>
        <Route path="/rocket">
-         <Rocket />
+         <Rocket dispatch={dispatch} counter={counter}/>
        </Route>
       </Switch>
-      <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin/>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin/>
-    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossorigin/>
+      <script src="https://unpkg.com/react/umd/react.production.min.js" crossOrigin/>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossOrigin/>
+    <script src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js" crossOrigin/>
     <script>var Alert = ReactBootstrap.Alert;</script>
     </div>
     

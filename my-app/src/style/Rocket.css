@@ -3,13 +3,16 @@ body {
 	font-family: "Courier New";
  }
 
-.left { 
+.left {
+	display: flex;
+	flex-direction: column;
 	background-color:#262446 
  
 	;
 	width: 70%;
 	top: 0;
 	left:0;
+	align-items: center;
 
  }
 
@@ -225,4 +228,9 @@ background-color: transparent ;
 
 #countFuel{
 	color: white;
+}
+
+.my-progress-bar{
+	width: 50%;
+	margin-top: 10px;
 }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import logo from "../../logo.svg";
-import { FiMenu } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 

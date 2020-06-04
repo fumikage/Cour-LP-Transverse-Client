@@ -3,20 +3,16 @@ import '../../style/Rocket.css';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 import { Button } from 'react-bootstrap';
+import {increment, decrement} from "../../actions";
+import MyProgressBar from "./ProgressBar";
 
 
-
-class SampleComponent extends Component {
+class Rocket extends Component {
   constructor(props) {
     super(props);
-    this.state = {bodyName: 'body-name1',fuel: 1};
+    this.state = {bodyName: 'body-name1'};
   }
-  addPoint(){
-    var fuel = this.state.fuel +1;
-    this.setState({fuel});
-  
-    
-  }
+
   changeState(){ 
   
     const renderer = ({ hours, minutes, seconds, completed }) => {
@@ -54,20 +50,19 @@ class SampleComponent extends Component {
       return (
         <div className="container-fluid">
           <div className={this.state.bodyName}>
-           <div class="left">
-            <div id="Completionist"></div>
-            <div class="row">
-             
+           <div className="left">
+            <div className="my-progress-bar">
+            <MyProgressBar counter={this.props.counter}/>
             </div>
-            <div class="row">
+            <div className="row">
       
-              <div class="col align-self-center">
+              <div className="col align-self-center">
                     <div id="countFuel">{this.state.fuel}</div>
-                <button type="image" class="button" onClick={this.addPoint.bind(this)}></button>
+                <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}}></button>
               </div>
             </div>
-            <div class="row">
-              <div class="col align-self-center">
+            <div className="row">
+              <div className="col align-self-center">
                   <Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
                   <Button variant="secondary" onClick={this.restartLaunch.bind(this)}>Restart</Button>{''}
               </div>
@@ -80,14 +75,14 @@ class SampleComponent extends Component {
               <div className="ground"/>
           </div>
 
-         
-      
+
+
         </div>
-      </div>
-      </div>
+          </div>
+        </div>
     );
     }
 }
 
 
-export default SampleComponent;
+export default Rocket;
