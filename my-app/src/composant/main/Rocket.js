@@ -10,7 +10,7 @@ import MyProgressBar from "./ProgressBar";
 class Rocket extends Component {
   constructor(props) {
     super(props);
-    this.state = {bodyName: 'body-name1', time: {}, seconds: 15};
+    this.state = {bodyName: 'body-state1', time: {}, seconds: 15};
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -39,6 +39,7 @@ class Rocket extends Component {
     }
 
     startTimer() {
+        this.props.dispatch(reinitialize())
         if (this.timer == 0 && this.state.seconds > 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
@@ -68,7 +69,7 @@ class Rocket extends Component {
     }
 
   restartLaunch(){
-    this.setState ({bodyName: 'body-State1'});
+    this.setState ({bodyName: 'body-state1'});
     return 0;
   }
   //<Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
@@ -83,7 +84,7 @@ class Rocket extends Component {
             </div>
             <div className="row" style={{"color":"white"}}>
               <div className="col align-self-center">
-                <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}}></button>
+                <button type="image" className="button" onClick={() => {this.props.dispatch(increment())}} disabled={this.state.bodyName !== "body-state1"}/>
               </div>
             </div>
             <div className="row">
