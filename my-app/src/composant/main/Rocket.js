@@ -13,8 +13,8 @@ class Rocket extends Component {
     this.state = {bodyName: 'body-name1'};
   }
 
-  changeState(){ 
-  
+  changeState(){
+
     const renderer = ({ hours, minutes, seconds, completed }) => {
       if (seconds <= 8 && seconds >=5){
         this.setState({bodyName:'body-state2'});
@@ -30,8 +30,6 @@ class Rocket extends Component {
         return <span>{seconds}</span>;
       }
     };
-
-  
    
   ReactDOM.render(
     (
@@ -51,6 +49,7 @@ class Rocket extends Component {
         <div className="container-fluid">
           <div className={this.state.bodyName}>
            <div className="left">
+               <div id="Completionist"/>
             <div className="my-progress-bar">
             <MyProgressBar counter={this.props.counter}/>
             </div>
