@@ -9,3 +9,9 @@ export const decrement = () => {
         type: 'DECREMENT'
     };
 };
+
+export const reinitialize = () => {
+    return {
+        type: 'REINITIALIZE'
+    };
+};

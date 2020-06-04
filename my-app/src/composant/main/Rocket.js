@@ -3,7 +3,7 @@ import '../../style/Rocket.css';
 import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
 import { Button } from 'react-bootstrap';
-import {increment, decrement} from "../../actions";
+import {increment, decrement, reinitialize} from "../../actions";
 import MyProgressBar from "./ProgressBar";
 
 
@@ -24,6 +24,7 @@ class Rocket extends Component {
         return <span>{seconds}</span>
       }else if (seconds === 0){
         this.setState({bodyName:'body-state3'});
+        this.props.dispatch(reinitialize());
     }
       else if(!completed){
         this.setState ({bodyName:'body-state1'});
@@ -40,6 +41,7 @@ class Rocket extends Component {
   };
   restartLaunch(){
     this.setState ({bodyName: 'body-State1'});
+    this.props.dispatch(reinitialize());
     return 0;
   }
   //<Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
@@ -62,7 +64,7 @@ class Rocket extends Component {
             </div>
             <div className="row">
               <div className="col align-self-center">
-                  <Button variant="secondary" onClick={this.changeState.bind(this)}>Launch</Button>{''}
+                  <Button variant="secondary" onClick={this.changeState.bind(this)} disabled={this.props.counter < 100 }>Launch</Button>{''}
                   <Button variant="secondary" onClick={this.restartLaunch.bind(this)}>Restart</Button>{''}
               </div>
             </div>
