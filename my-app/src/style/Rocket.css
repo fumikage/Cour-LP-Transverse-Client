@@ -18,7 +18,7 @@ body {
  	padding: 20px;
  }
 
- a.button { 
+ a.button {
 	display: inline-block;
 	background-color: white;
 	color: black;
@@ -30,7 +30,7 @@ body {
 
   }
 
-a:hover { 
+a:hover {
 	color: hotpink;
  }
 
@@ -121,8 +121,8 @@ div.body-state5 .rocket {
 
 div.body-state3 .rocket,
 div.body-state4 .rocket {
-	transition: 4s;
-	transform: translateY(-300%);
+	transition: 5s;
+	transform: translateY(-500%);
 }
 
 .state1,
@@ -144,19 +144,19 @@ div.body-state5 .state5{display: block;}
 .body-name1{
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-state1 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-State1 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-State1 .rocket {
@@ -168,31 +168,31 @@ div.body-state5 .state5{display: block;}
 .body-state2 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-state21 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-state3 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-state4 {
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .body-state5{
 	display: flex;
 	flex-direction: row;
-	height: 600px;
+	height: 100%;
 }
 
 .button

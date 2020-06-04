@@ -52,7 +52,7 @@ class SampleComponent extends Component {
   //<button onClick={this.restartLaunch.bind(this)}></button>
     render() {
       return (
-        <div clas="container-fluid">
+        <div className="container-fluid">
           <div className={this.state.bodyName}>
            <div class="left">
             <div id="Completionist"></div>

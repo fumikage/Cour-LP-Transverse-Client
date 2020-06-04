@@ -1,7 +1,16 @@
+#root{
+  height: 100%;
+}
+
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%;
 }
 
 .App-logo {
@@ -34,7 +43,7 @@
 .header{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .navbar-icon{
@@ -95,9 +104,9 @@
   left: 0;
   top: 0;
   bottom: 0;
-  right: 4em;
   padding: 1em;
   background: #494949;
+  z-index: 50;
 }
 
 @keyframes App-logo-spin {
