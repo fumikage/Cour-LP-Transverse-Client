@@ -5,16 +5,22 @@ import Countdown from 'react-countdown';
 import { Button } from 'react-bootstrap';
 import {increment, decrement, reinitialize} from "../../actions";
 import MyProgressBar from "./ProgressBar";
+import { useQuery } from '@apollo/react-hooks';
+const jwt = require ('jsonwebtoken')
 
 
 class Rocket extends Component {
   constructor(props) {
-    super(props);
-    this.state = {bodyName: 'body-state1', time: {}, seconds: 15};
-    this.timer = 0;
-    this.startTimer = this.startTimer.bind(this);
-    this.countDown = this.countDown.bind(this);
+    super(props)
+    this.state = {bodyName: 'body-state1', time: {}, seconds: 15}
+    this.timer = 0
+    this.startTimer = this.startTimer.bind(this)
+    this.countDown = this.countDown.bind(this)
+    this.token = localStorage.getItem("tokensaved")
+    this.Astronaut = jwt.decode(this.token)
+    console.log(this.Astronaut)
   }
+    
 
     secondsToTime(secs){
         let hours = Math.floor(secs / (60 * 60));
