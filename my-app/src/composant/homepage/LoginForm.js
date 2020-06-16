@@ -39,7 +39,7 @@ const LOGIN_MUTATION = gql`
             }}
             />
             <p>Astronaut Password</p>
-            <input 
+            <input type="password"
                 ref={node =>{
                 password = node;
             }}/>

@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom";
 import gql from "graphql-tag";
 
 const REGISTER_MUTATION = gql`
-  mutation CreateAstronaut($name: String!, $surname: String!, $nationality: String!, $login: String!, $pass: String!){
-  createAstronaut(name: $name,  surname: $surname, nationality: $nationality, money:0, login: $login, password: $pass){
+  mutation CreateAstronaut($name: String!, $surname: String!, $nationality: String!, $login: String!, $pass: String!, $rocketName: String!){
+  createAstronaut(name: $name,  surname: $surname, nationality: $nationality, money:0, login: $login, password: $pass, rocketName: $rocketName){
       token
      astronaut {
     _id
@@ -22,6 +22,7 @@ function AddProject() {
     let nationality;
     let login;
     let pass;
+    let rocketName;
     const [register, { data }] =  useMutation(REGISTER_MUTATION);
     if(data){
       localStorage.setItem("tokensaved", data.createAstronaut.token);
@@ -36,12 +37,13 @@ function AddProject() {
         <form
           onSubmit={e => {
             e.preventDefault();
-            register({ variables: { name: name.value, surname: surname.value, nationality: nationality.value, login: login.value, pass: pass.value } });
+            register({ variables: { name: name.value, surname: surname.value, nationality: nationality.value, login: login.value, pass: pass.value, rocketName: rocketName.value } });
             name.value = '';
             surname.value = '';
             nationality.value = '';
             login.value = '';
             pass.value = '';
+            rocketName.value = '';
            
           }}
         >
@@ -73,6 +75,12 @@ function AddProject() {
         <input type="password"
           ref={node => {
               pass = node;
+          }}
+        />
+        <p>Rocket Name</p>
+        <input 
+          ref={node => {
+              rocketName = node;
           }}
         />
         <div className="margin-v-m">

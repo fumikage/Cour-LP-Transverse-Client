@@ -6,7 +6,37 @@ import { Button } from 'react-bootstrap';
 import {increment, decrement, reinitialize} from "../../actions";
 import MyProgressBar from "./ProgressBar";
 import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 const jwt = require ('jsonwebtoken')
+
+const GET_ROCKET = gql`
+  query findRocketOfAstronaut($id: ID!) {
+    findRocketOfAstronaut(_id: $id){
+      _id
+      name
+      fuel
+      location
+    }
+  }
+`
+function MyRocket({args, id}){
+  const { loading, error, data} = useQuery(GET_ROCKET,{ 
+    variables : {id: id}
+  });
+if(data){
+  console.log(data)
+  return (
+    <div>
+      <h2>
+        { data.findRocketOfAstronaut.name }
+      </h2>
+    </div>
+  )
+}else{
+  return false
+}
+}
+  
 
 
 class Rocket extends Component {
@@ -19,6 +49,7 @@ class Rocket extends Component {
     this.token = localStorage.getItem("tokensaved")
     this.Astronaut = jwt.decode(this.token)
     console.log(this.Astronaut)
+    
   }
     
 
@@ -99,6 +130,11 @@ class Rocket extends Component {
               <div className="col align-self-center">
                   <Button variant="secondary" onClick={this.startTimer} disabled={this.props.counter < 100 }>Launch</Button>{''}
                   <Button variant="secondary" onClick={this.restartLaunch.bind(this)} disabled={this.state.bodyName !== 'body-state3'}>Restart</Button>{''}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col algin-self-center">
+                <MyRocket args={this.props} id={this.Astronaut.id}/>
               </div>
             </div>
           </div>
