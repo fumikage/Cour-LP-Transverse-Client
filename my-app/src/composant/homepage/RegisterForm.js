@@ -5,9 +5,15 @@ import gql from "graphql-tag";
 
 const REGISTER_MUTATION = gql`
   mutation CreateAstronaut($name: String!, $surname: String!, $nationality: String!, $login: String!, $pass: String!){
-  createAstronaut(name: $name,  surname: $surname, nationality: $nationality, money:0, login: $login, password: $pass)
+  createAstronaut(name: $name,  surname: $surname, nationality: $nationality, money:0, login: $login, password: $pass){
+      token
+     astronaut {
+    _id
+    login
+  }
 }
-`;
+}
+`
 
 
 function AddProject() {
@@ -16,8 +22,15 @@ function AddProject() {
     let nationality;
     let login;
     let pass;
-    const [register, { data }] = useMutation(REGISTER_MUTATION);
+    const [register, { data }] =  useMutation(REGISTER_MUTATION);
+    if(data){
+      localStorage.setItem("tokensaved", data.createAstronaut.token);
+      window.location.href = "/rocket";
+    }
+    
+
   
+   
     return (
       <div>
         <form

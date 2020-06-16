@@ -17,7 +17,6 @@ const LOGIN_MUTATION = gql`
     let mylogin;
     let password;
     const [loginFunction, {data}]= useMutation(LOGIN_MUTATION);
-
     if(data){
       localStorage.setItem("tokensaved", data.login.token);
       window.location.href = "/rocket";
