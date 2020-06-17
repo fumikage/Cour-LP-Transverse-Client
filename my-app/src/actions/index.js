@@ -1,12 +1,7 @@
-export const increment = () => {
+export const increment = (incrvalue) => {
     return {
-        type : 'INCREMENT'
-    };
-};
-
-export const decrement = () => {
-    return {
-        type: 'DECREMENT'
+        type : 'INCREMENT',
+        incrvalue: incrvalue
     };
 };
 
