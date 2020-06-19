@@ -10,3 +10,10 @@ export const reinitialize = () => {
         type: 'REINITIALIZE'
     };
 };
+
+export const  add = (incrvalue) => {
+    return {
+        type: 'ADD',
+        incrvalue: incrvalue
+    }
+}

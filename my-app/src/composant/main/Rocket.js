@@ -5,82 +5,37 @@ import Countdown from 'react-countdown';
 import { Button } from 'react-bootstrap';
 import {increment, reinitialize} from "../../actions";
 import MyProgressBar from "./ProgressBar";
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
+
+import RocketDetail from './RocketDetail';
+import CurrentPlanet from './CurrentPlanet';
+import ChangePlanet from './changePlanet';
 import gql from 'graphql-tag';
-const jwt = require ('jsonwebtoken')
+const jwt = require ('jsonwebtoken');
 
-const GET_ROCKET = gql`
-  query findRocketOfAstronaut($id: ID!) {
-    findRocketOfAstronaut(_id: $id){
-      _id
-      name
-      fuel
-      location
-    }
-  }
-`
-const GET_PLANET = gql`
-  query findPlanetSelected($id: ID!){
-    findPlanetSelected(_id: $id){
-        id
-        name
-        costDestination
-    }
-  }
-`
-function Planet({id}){
-  const { loading, error, data} = useQuery(GET_PLANET,{ 
-    variables : {id: id}
-  });
-  if(data){
-    console.log(data)
-    return (
-      <div>
-        <h2>
-        </h2>
-      </div>
-    )
-  }else{
-    return false
-  }
-}
 
-function MyRocket({args, id}){
 
-  const { loading, error, data} = useQuery(GET_ROCKET,{ 
-    variables : {id: id}
-  });
-if(data){
-  console.log(data)
-  return (
-    <div>
-      <h2>
-        { data.findRocketOfAstronaut.name }
-      </h2>
-    </div>
-  )
-}else{
-  return false
-}
-}
-
-  
 
 
 class Rocket extends Component {
   constructor(props) {
     super(props)
-    this.state = {bodyName: 'body-state1', time: {}, seconds: 15, incrvalue: 10}
+    this.state = {bodyName: 'body-state1', time: {}, seconds: 15}
     this.timer = 0
     this.startTimer = this.startTimer.bind(this)
     this.countDown = this.countDown.bind(this)
     this.token = localStorage.getItem("tokensaved")
     this.Astronaut = jwt.decode(this.token)
     console.log(this.Astronaut);
-   
-    
+    this.incrementFunc = this.setIncrement.bind(this);
   }
-    
+  
+  setIncrement = (cost)=>{
+      this.setState({incrvalue: cost})
+  }
+
+ 
+  
 
     secondsToTime(secs){
         let hours = Math.floor(secs / (60 * 60));
@@ -139,8 +94,10 @@ class Rocket extends Component {
     
 
   restartLaunch(){
+    
+    
     this.setState ({bodyName: 'body-State1'});
-
+    
     return 0;
   }
  
@@ -155,7 +112,9 @@ class Rocket extends Component {
             </div>
             <div className="row" style={{"color":"white"}}>
               <div className="col align-self-center">
-                <button type="image" className="button" onClick={() => {this.props.dispatch(increment(this.state.incrvalue))}} disabled={this.state.bodyName !== "body-state1" && this.state.bodyName !== "body-State1"}/>
+                <button type="image" className="button" 
+                  onClick={() => {this.props.dispatch(increment(this.state.incrvalue))}} 
+                  disabled={this.state.bodyName !== "body-state1" && this.state.bodyName !== "body-State1"}/>
               </div>
             </div>
             <div className="row">
@@ -166,8 +125,8 @@ class Rocket extends Component {
             </div>
             <div class="row">
               <div class="col algin-self-center">
-                <MyRocket args={this.props} id={this.Astronaut.id}/>
-                <Planet args={this.props} id={this.Astronaut.id}/>
+                <RocketDetail args={this.props} id={this.Astronaut.id}/>
+                <CurrentPlanet id={this.Astronaut.id} incrementFunc={this.incrementFunc}/>
               </div>
             </div>
           </div>
