@@ -20,7 +20,7 @@ function MyRocket({args, id}){
       variables : {id: id}
     });
   if(data){
-    console.log(data)
+    
    
     return (
       <div>

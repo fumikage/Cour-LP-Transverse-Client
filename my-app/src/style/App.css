@@ -109,6 +109,11 @@
   z-index: 50;
 }
 
+.imgPlanet{
+  max-width: 20%;
+	height: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

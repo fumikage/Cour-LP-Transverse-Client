@@ -13,7 +13,7 @@ class MyProgressBar extends React.Component {
     render() {
         return (
             <div>
-                <ProgressBar variant={"success"} now={this.props.counter}/>
+                <ProgressBar variant="warning" animated now={this.props.counter} label={`${this.props.counter}%`} />
             </div>
         );
     }

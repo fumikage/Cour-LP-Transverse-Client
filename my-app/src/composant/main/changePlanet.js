@@ -14,8 +14,17 @@ const MOVE_PLANET = gql`
   }
 `;
 
-
-function ChangePlanet({id, bool}){
+const GET_PLANET = gql`
+  query findPlanetSelected($id: ID!){
+    findPlanetSelected(_id: $id){
+        id
+        name
+        costDestination
+    }
+  }
+`
+function ChangePlanet({id}){
+    
     const [changePlanet, { loading, error, data}] =  useMutation(MOVE_PLANET,{ 
     variables : {id: id}
   });
