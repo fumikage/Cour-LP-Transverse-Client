@@ -163,9 +163,13 @@ background-color: transparent ;
   top: 1px;
   left:1px;
   outline: none;
+  
 }
 .button:focus{
 	outline: none;
+}
+.buttonLaunch{
+	background:linear-gradient(to bottom, #af218b 5%, #d82076 100%)
 }
 
 #countFuel{

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { useMutation } from '@apollo/react-hooks';
+import '../../style/App.css';
 
 const LOGIN_MUTATION = gql`
   mutation login($mylogin: String!, $password: String!){
@@ -17,12 +18,15 @@ const LOGIN_MUTATION = gql`
     let mylogin;
     let password;
     const [loginFunction, {data}]= useMutation(LOGIN_MUTATION);
+    console.log(data)
     if(data){
       localStorage.setItem("tokensaved", data.login.token);
+    
       window.location.href = "/rocket";
     }
     return (
-      <div>
+      <div class="container-fluid blue">
+        <img class="logo" src='/image/logRocke.png'/>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -32,21 +36,24 @@ const LOGIN_MUTATION = gql`
             password.value = '';
           }}
         >
-          <p>Astronaut Login</p>
+    
+          <p class="login">Astronaut Login</p>
           <input
             ref={node => {
               mylogin = node;
             }}
             />
-            <p>Astronaut Password</p>
+            <p class="login">Astronaut Password</p>
             <input type="password"
                 ref={node =>{
                 password = node;
             }}/>
-            <div className="margin-v-m">
-              <button type="submit" className="btn-primary">Login</button>
+          
+          <div>
+              <button type="submit" class="btn buttonLogin" >Login</button>
             </div>
         </form>
+       
       </div>
     );
   }
@@ -57,11 +64,8 @@ class Login extends Component {
   render() {
    console.log(this);
     return (
-      <div className="container">
-        <h4>Login</h4>
+        
         <LoginFunction/>
-       </div>
-      
     )
   }
   

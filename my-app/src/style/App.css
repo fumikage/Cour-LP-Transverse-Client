@@ -113,7 +113,56 @@
   max-width: 20%;
 	height: auto;
 }
+.logo{
+  max-width: 30%;
+	height: auto;
+}
 
+.blue{
+  background-color:#262446;
+}
+
+.slogan1{
+  color: white;
+  font-size: 280%;
+}
+.slogan2{
+  color: #d82076;
+  font-size: 150%;
+}
+.login{
+  color: white;
+}
+.container-fluid {
+  height: 300%;
+  width: auto;
+   /* don't show content that exceeds my height */
+}
+.buttonLogin {
+  background:linear-gradient(to bottom, #af218b 5%, #d82076 100%);
+}
+.myButton {
+	background:linear-gradient(to bottom, #af218b 5%, #d82076 100%);
+	background-color:#af218b;
+	border-radius:28px;
+	border:1px solid #d82076;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #d82076;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #d82076 5%, #af218b 100%);
+	background-color:#d82076;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

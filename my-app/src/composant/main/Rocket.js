@@ -1,15 +1,13 @@
-import React, { Component, Suspense } from 'react';
+import React from 'react';
 import '../../style/Rocket.css';
 import { Button } from 'react-bootstrap';
 import MyProgressBar from "./ProgressBar";
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/react-hooks';
 import RocketDetail from './RocketDetail';
 import CurrentPlanet from './CurrentPlanet';
-import ImagePlanet from './ImagePlanet';
-import ChangePlanet from './changePlanet';
 import gql from 'graphql-tag';
 import {useState} from 'react';
-import Planet from './CurrentPlanet';
+
 const jwt = require ('jsonwebtoken');
 
 
@@ -84,6 +82,7 @@ let currentPlanet = await changePlanet({ variables: { id: Astronaut.id } })
 setPlanet(currentPlanet.data.changePlanet)
 setIncrvalue(currentPlanet.data.changePlanet.costDestination)
 
+
 return 0;
 }
 
@@ -105,13 +104,26 @@ if (seconds <= 4 && seconds >= 3 && bodyName !== "body-state31") {
  if (seconds <=2 && seconds >= 0 && bodyName !== "body-state3"){
 setbodyName("body-state3");
 }
-console.log(planet)
+
+
+const logout = () => {
+  localStorage.setItem("tokensaved", "");
+  window.location.href = "/home";
+}
 return (
-  <div class="container-fluid">
+  <div class="container-fluid p-0">
     <div className={bodyName}>
      <div className="left">
+     <div class="row">
+       <div class="col-lg-6">
+     <RocketDetail id={Astronaut.id}/>
+     </div>
+     <div class="col-lg-6">
+       <Button variant="danger" onClick={logout}>Logout</Button>
+     </div>
+     </div>
+        
       <div className="my-progress-bar">
-        <p style={{"color":"white"}}>Fuel Bar</p>
       <MyProgressBar counter={counter} /> 
       </div>
       <div className="row" style={{"color":"white"}}>
@@ -123,17 +135,14 @@ return (
       </div>
       <div className="row">
         <div className="col align-self-center">
-            <Button variant="secondary" onClick={() => {setTimer(setInterval(()=>{setSeconds(c=>c-1)},1000))}} disabled={counter < 100 }>Launch</Button>{''}
-            <Button variant="secondary" onClick={restartLaunch} disabled={bodyName !== 'body-state3'}>Restart</Button>{''}
+            <Button variant="warning" onClick={() => {setTimer(setInterval(()=>{setSeconds(c=>c-1)},1000))}} disabled={counter < 100 }>Launch</Button>{''}
+            <Button  variant="warning" onClick={restartLaunch} disabled={bodyName !== 'body-state3'}>Restart</Button>{''}
         </div>
       </div>
       <div class="row">
         <div class="col algin-self-center">
-          <RocketDetail id={Astronaut.id}/>
           <CurrentPlanet id={Astronaut.id} state={planet} setState={setPlanet} onChange={planet} setIncrvalue={setIncrvalue}/>
-  
-         
-          
+
         </div>
       </div>
     </div>

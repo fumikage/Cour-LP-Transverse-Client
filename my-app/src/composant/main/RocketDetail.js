@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import ReactDOM from 'react-dom';
+
 import gql from 'graphql-tag';
 
 const GET_ROCKET = gql`

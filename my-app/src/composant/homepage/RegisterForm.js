@@ -33,7 +33,8 @@ function AddProject() {
   
    
     return (
-      <div>
+      <div class="container-fluid blue">
+        <img class="logo" src='/image/logRocke.png'/>
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -47,45 +48,44 @@ function AddProject() {
            
           }}
         >
-        <p>Astronaut Name</p>
+        <p class="login">Astronaut Name</p>
         <input
           ref={node => {
             name = node;
           }}
         />
-        <p>Astronaut Surname</p>
+        <p class="login">Astronaut Surname</p>
         <input
           ref={node => {
               surname = node;
           }}
         />
-        <p>Astronaut Nationality</p>
+        <p class="login">Astronaut Nationality</p>
         <input
           ref={node => {
               nationality = node;
           }}
         />
-        <p>Astronaut Login</p>
+        <p class="login">Astronaut Login</p>
         <input
           ref={node => {
               login = node;
           }}
         />
-        <p>Astronaut Password</p>
+        <p class="login">Astronaut Password</p>
         <input type="password"
           ref={node => {
               pass = node;
           }}
         />
-        <p>Rocket Name</p>
+        <p class="login">Rocket Name</p>
         <input 
           ref={node => {
               rocketName = node;
           }}
         />
-        <div className="margin-v-m">
-
-        <button type="submit" className="btn-primary">Register</button>
+        <div>
+        <button type="submit" class="btn buttonLogin">Register</button>
         </div>
         </form>
       </div>
@@ -94,12 +94,9 @@ function AddProject() {
 
 class ProjetDetail extends Component {
   render() {
-    console.log(this);
     return (
-      <div className="container">
-        <h4>Create your Astronaut</h4>
         <AddProject />
-      </div>
+
     );
   }
 }
